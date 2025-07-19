@@ -100,37 +100,6 @@ for name in "${list[@]}" ; do
 	func_install $name
 done
 
-### Get current username and setup up autologin for hyprland
-### Hyprland launched via UWSM and login directly as user, rely on disk encryption + hyprlock for security
-
-current_user=$(id -u -n)
-
-#sudo systemctl enable uwsm@$current_user.service
-
-mkdir -p ~/.config/uwsm
-cat <<EOF > ~/.config/uwsm/config.toml
-[general]
-autologin = true
-user = $current_user
-session = "Hyprland"
-
-[sessions]
-Hyprland = "/usr/bin/Hyprland"
-EOF
-
-if [ -f "/usr/share/wayland-sessions/hyprland.desktop" ]; then
-    echo "File exists, nothing to do."
-else
-    sudo cat <<EOF > /usr/share/wayland-sessions/hyprland.desktop
-[Desktop Entry]
-Name=Hyprland
-Exec=Hyprland
-Type=Application
-DesktopNames=Hyprland
-EOF
-fi
-
-###############################################################################
 
 tput setaf 7;echo "################################################################"
 echo "You now have a functional xserver awaiting a Window Manager"
