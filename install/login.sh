@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Hyprland launched via UWSM and login directly as user, rely on disk encryption + hyprlock for security
-pacman -S --noconfirm --needed uwsm
+sudo pacman -S --noconfirm --needed uwsm
 
 # Compile the seamless login helper -- needed to prevent seeing terminal between loader and desktop
 cat <<'CCODE' >/tmp/seamless-login.c
