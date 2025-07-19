@@ -39,6 +39,10 @@ func_install() {
     	sudo pacman -S --noconfirm --needed $1
     fi
 }
+# Enable multilib repository for 32-bit libraries
+if ! grep -q "^\[multilib\]" /etc/pacman.conf; then
+    sudo sed -i '/^#\[multilib\]/,/^#Include/ s/^#//' /etc/pacman.conf
+fi
 
 ###############################################################################
 echo "Installation of the core software"
