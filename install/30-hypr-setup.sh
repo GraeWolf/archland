@@ -43,7 +43,7 @@ func_install() {
 if ! grep -q "^\[multilib\]" /etc/pacman.conf; then
     sudo sed -i '/^#\[multilib\]/,/^#Include/ s/^#//' /etc/pacman.conf
 fi
-
+sudo pacman -Sy
 ###############################################################################
 echo "Installation of the core software"
 ###############################################################################
@@ -105,7 +105,7 @@ done
 
 current_user=$(id -u -n)
 
-sudo systemctl enable uwsm@$current_user.service
+#sudo systemctl enable uwsm@$current_user.service
 
 mkdir -p ~/.config/uwsm
 cat <<EOF > ~/.config/uwsm/config.toml
@@ -122,12 +122,12 @@ if [ -f "/usr/share/wayland-sessions/hyprland.desktop" ]; then
     echo "File exists, nothing to do."
 else
     sudo cat <<EOF > /usr/share/wayland-sessions/hyprland.desktop
-    [Desktop Entry]
-    Name=Hyprland
-    Exec=Hyprland
-    Type=Application
-    DesktopNames=Hyprland
-    EOF
+[Desktop Entry]
+Name=Hyprland
+Exec=Hyprland
+Type=Application
+DesktopNames=Hyprland
+EOF
 fi
 
 ###############################################################################
