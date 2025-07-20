@@ -4,7 +4,7 @@ tput setaf 7;echo "#############################################################
 echo "Installing Brave Browser"
 echo "################################################################"
 echo;tput sgr0
-pikaur -S --noconfirm --needed brave-bin
+yay -S --noconfirm --needed brave-bin
 
 tput setaf 7;echo "################################################################"
 echo "Installation of Brave complete"
