@@ -55,6 +55,7 @@ ttf-dejavu
 ttf-liberation
 polkit
 polkit-gnome
+polkit-kde-agent
 pipewire
 pipewire-alsa
 pipewire-pulse
